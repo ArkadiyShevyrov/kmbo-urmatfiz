@@ -48,13 +48,25 @@
     \def\TagColor{gray!30}}}}
   \tcbox[colback=\TagColor,colframe=\TagColor,
     boxrule=0pt, arc=2pt,
-    left=4pt,right=4pt,top=2pt,bottom=2pt,
-    fontupper=\bfseries\sffamily\large]{#2}%
+    left=0pt,right=0pt,top=2pt,bottom=2pt,
+    fontupper=\bfseries,
+    before skip=4pt, after skip=4pt
+]{#2}%
   \endgroup
 }
 
 % ===================== Структура разделов ======================
-\newcommand{\Ticket}[1]{\par\noindent{\Large\bfseries Билет №#1.}\par\vspace{0.4em}}
+
+\newcommand{\subsectionstar}[1]{%
+  \par\phantomsection%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+}
+
+\newcommand{\Ticket}[1]{%
+  \subsectionstar{Билет №#1}%
+}
+
 
 \newenvironment{cond}{\par\noindent\textbf{Условие.}}{\par}
 \newenvironment{sol}{\par\noindent\textbf{Решение.}}{\par}
