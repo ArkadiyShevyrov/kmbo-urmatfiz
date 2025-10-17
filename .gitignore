@@ -1,0 +1,15 @@
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fls
+*.fdb_latexmk
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.pdf
+*.bak*
+# VS Code settings
+.vscode/
