@@ -1,27 +1,70 @@
 \Ticket{0}
 
-\TaskTag[progress]{№0.3}
+\TaskTag[done]{№0.3}
 \begin{cond}
 	Решить краевую задачу для ограниченной струны:
 
 	\(
 	\begin{cases}
-		u_{tt} = 4u_{xx} + (2 - t)\sin (\frac{\pi x}{2}), & t > 0,\; x \in (0,2), \\
-		u|_{x=0} = u|_{x=2},                                                      \\
+		u_{tt} = 4u_{xx} + (2 - t)\sin \frac{\pi x}{2}, & t > 0,\; x \in (0,2), \\
+		u|_{x=0} = u|_{x=2} = 0,                                                \\
 		u|_{t=0} = 3 \sin (2\pi x),\quad u_t|_{t=0} = 0.
 	\end{cases}
 	\)
 \end{cond}
 
 \begin{sol}
+	Ищем решение в виде:
+	\[
+		u(t,x)=\alpha(t)\sin\frac{\pi x}{2}+\beta(t)\sin{2\pi x}.
+	\]
 
+	Тогда:
+	\[
+		u_{tt}-4u_{xx}=[\alpha''+\pi^2\alpha]\sin\frac{\pi x}{2}+[\beta''+16\pi^2\beta]\sin{2\pi x}=(2-t)\sin\frac{\pi x}{2}.
+	\]
+
+	Начальные условия:
+	\[
+		\begin{cases}
+			u|_{t=0}=\alpha(0)\sin\frac{\pi x}{2}+\beta(0)\sin{2\pi x}=3\sin{2\pi x}, \\
+			u_t|_{t=0}=\alpha'(0)\sin\frac{\pi x}{2}+\beta'(0)\sin{2\pi x}=0.
+		\end{cases}
+	\]
+
+	\textbf{1. Для }$\alpha(t)$:
+	\[
+		\begin{cases}
+			\alpha''+\pi^2\alpha=2-t, \\
+			\alpha(0)=\alpha'(0)=0.
+		\end{cases}
+	\]
+	Решение:
+	\[
+		\alpha(t)=\frac{1}{\pi^2}\!\left(\frac{1}{\pi}\sin{\pi t}-2\cos{\pi t}+2-t\right).
+	\]
+
+	\textbf{2. Для }$\beta(t)$:
+	\[
+		\begin{cases}
+			\beta''+16\pi^2\beta=0, \\
+			\beta(0)=3,             \\
+			\beta'(0)=0.
+		\end{cases}
+		\Rightarrow
+		\beta(t)=3\cos{4\pi t}.
+	\]
 \end{sol}
 
 \begin{out}
-
+	\[
+		u(t,x)=\frac{1}{\pi^2}\!\left(\frac{1}{\pi}\sin{\pi t}-2\cos{\pi t}+2-t\right)\sin\frac{\pi x}{2}+3\cos(4\pi t)\sin(2\pi x).
+	\]
 \end{out}
 
-\TaskTag[progress]{№0.4}
+% ------------------------------------------------------------
+
+\TaskTag[done]{№0.4}
 \begin{cond}
 	Найти решение задачи Коши:
 
@@ -36,14 +79,56 @@
 \end{cond}
 
 \begin{sol}
+	Известно:
+	\[
+		\Delta(xyz)=0,\quad \Delta(\ch x)=\ch x.
+	\]
+	Ищем решение:
+	\[
+		u(t,x,y,z)=\alpha(t)xyz+\beta(t)\ch x.
+	\]
 
+	Подстановка:
+	\[
+		\alpha''xyz+\beta''\ch x=4\beta\ch x.
+	\]
+
+	Начальные условия:
+	\[
+		\alpha(0)xyz+\beta(0)\ch x=2xyz,\quad
+		\alpha'(0)xyz+\beta'(0)\ch x=\ch x.
+	\]
+
+	\textbf{1. Для }$\alpha(t)$:
+	\[
+		\begin{cases}
+			\alpha''=0,  \\
+			\alpha(0)=2, \\
+			\alpha'(0)=0.
+		\end{cases}
+		\Rightarrow \alpha(t)=2.
+	\]
+
+	\textbf{2. Для }$\beta(t)$:
+	\[
+		\begin{cases}
+			\beta''=4\beta, \\
+			\beta(0)=0,     \\
+			\beta'(0)=1.
+		\end{cases}
+		\Rightarrow \beta(t)=\tfrac{1}{2}\sh(2t).
+	\]
 \end{sol}
 
 \begin{out}
-
+	\[
+		u(t,x,y,z)=2xyz+\tfrac{1}{2}\sh(2t)\ch(x).
+	\]
 \end{out}
 
-\TaskTag[progress]{№0.5}
+% ------------------------------------------------------------
+
+\TaskTag[done]{№0.5}
 \begin{cond}
 	Вычислить производные всех порядков в смысле теории обобщённых функций:
 
@@ -57,16 +142,115 @@
 	\)
 \end{cond}
 
-\TaskTag[progress]{№0.6}
-\begin{cond}
-	В пространстве $D'(\mathbb{R})$ найти общее решение уравнения ($\eta(x)$ - функция Хэвисайда)
-	$y'' + 4y' + 3y = -\eta(x)$.
-\end{cond}
-
 \begin{sol}
+	Обыкновенные производные:
+	\[
+		\{f'\}=
+		\begin{cases}
+			-2(x-2), & x\in(0,2),    \\
+			0,       & x\notin(0,2),
+		\end{cases}
+		\quad
+		\{f''\}=
+		\begin{cases}
+			-2, & x\in(0,2),    \\
+			0,  & x\notin(0,2).
+		\end{cases}
+	\]
+	Скачки:
+	\[
+		[f']_{x=0}=4,\quad [f']_{x=2}=0,\quad [f'']_{x=0}=-2,\quad [f'']_{x=2}=2.
+	\]
 
+	Обобщённые производные:
+	\[
+		f'(x)=\{f'\},
+	\]
+	\[
+		f''(x)=\{f''\}+4\delta(x),
+	\]
+	\[
+		f'''(x)=4\delta'(x)+2\delta(x-2)-2\delta(x),
+	\]
+	\[
+		f^{(k)}(x)=4\delta^{(k-2)}(x)+2\delta^{(k-3)}(x-2)-2\delta^{(k-3)}(x),\quad k>3.
+	\]
 \end{sol}
 
 \begin{out}
+	\[
+		\boxed{
+			f''(x)=
+			\begin{cases}
+				-2, & x\in(0,2),    \\
+				0,  & x\notin(0,2),
+			\end{cases}
+			+4\delta(x),\quad
+			f'''(x)=4\delta'(x)+2\delta(x-2)-2\delta(x).
+		}
+	\]
+\end{out}
 
+% ------------------------------------------------------------
+
+\TaskTag[done]{№0.6}
+\begin{cond}
+	В пространстве $D'(\mathbb{R})$ найти общее решение уравнения ($\eta(x)$ — функция Хевисайда)
+	\[
+		y'' + 4y' + 3y = -\eta(x).
+	\]
+\end{cond}
+
+\begin{sol}
+	Полагаем $y(x)=\eta(x)z(x)$, где $z\in C^2(\mathbb{R})$.
+
+	Тогда:
+	\[
+		y' = z'(x)\eta(x)+z(0)\delta(x),
+		\quad
+		y'' = z''(x)\eta(x)+z(0)\delta'(x)+z'(0)\delta(x).
+	\]
+
+	Подставляем в уравнение:
+	\[
+		z''\eta+z(0)\delta'+z'(0)\delta+4z'\eta+4z(0)\delta+3z\eta=-\eta.
+	\]
+
+	Приравниваем коэффициенты при $\eta$, $\delta$, $\delta'$:
+	\[
+		\begin{cases}
+			z''+4z'+3z=-1, \\
+			z'(0)+4z(0)=0, \\
+			z(0)=0.
+		\end{cases}
+		\Rightarrow z'(0)=z(0)=0.
+	\]
+
+	Решаем:
+	\[
+		\lambda^2+4\lambda+3=0 \Rightarrow \lambda_{1,2}=-2\pm1.
+	\]
+	\[
+		z_{о.о.}=C_1e^{-x}+C_2e^{-3x},\quad z_{ч.н.}=-\tfrac{1}{3}.
+	\]
+	\[
+		z=C_1e^{-x}+C_2e^{-3x}-\tfrac{1}{3}.
+	\]
+	\[
+		\begin{cases}
+			C_1+C_2=\tfrac{1}{3}, \\
+			C_1+3C_2=0
+		\end{cases}
+		\Rightarrow
+		C_1=\tfrac{1}{2},\ C_2=-\tfrac{1}{6}.
+	\]
+	\[
+		z(x)=\tfrac{1}{6}(3e^{-x}-e^{-3x}-2).
+	\]
+\end{sol}
+
+\begin{out}
+	\[
+		y(x)=\tfrac{1}{6}(3e^{-x}-e^{-3x}-2)\eta(x)+C_1e^{-x}+C_2e^{-3x}.
+	\]
 \end{out}

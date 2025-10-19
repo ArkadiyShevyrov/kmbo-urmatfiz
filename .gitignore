@@ -13,3 +13,4 @@
 *.bak*
 # VS Code settings
 .vscode/
+*.xdv
