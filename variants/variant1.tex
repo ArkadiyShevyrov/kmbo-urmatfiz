@@ -16,7 +16,7 @@
 
 	\(
 	\begin{cases}
-		u_{tt} = 9u_{xx} + (2e - 1)\sin 3x,              \\
+		u_{tt} = 9u_{xx} + (2t - 1)\sin \pi3x,           \\
 		u|_{x=0} = u|_{x=1} = 0, & t > 0,\; x \in (0,1), \\
 		u|_{t=0} = -\sin 2\pi x,\quad u_t|_{t=0} = 0.
 	\end{cases}
@@ -45,6 +45,7 @@
 
 \end{out}
 
+\newpage
 \TaskTag[todo]{№1.5}
 \begin{cond}
 	Вычислить производные всех порядков в смысле теории обобщённых функций:
@@ -59,6 +60,108 @@
 	\)
 \end{cond}
 
+\begin{sol}
+
+	\Definition{Тест-функция}{
+		функция $\varphi:\mathbb{R}\to\mathbb{R}$,
+		бесконечно дифференцируемая и имеющая компактный носитель ($\varphi(x)=0$ вне некоторого отрезка).
+	}
+
+	\Definition{Обобщённая функция}{
+		непрерывный линейный функционал $T: C_c^\infty(\mathbb{R})\to\mathbb{R}$,
+		$\varphi\mapsto\langle T, \varphi \rangle$,
+		Здесь $C_c^\infty(\mathbb{R})$ -- пространство тест-функций $\varphi$.
+	}
+
+	\Definition{Дельта-функция Дирака}{
+		обобщённая функция $\delta$, определяемая действием
+		$\langle \delta, \varphi \rangle = \varphi(0)$
+		для любой $\varphi \in C_c^\infty(\mathbb{R})$.
+		Для сдвинутой дельта-функции $\delta_a(x)=\delta(x-a)$ имеем
+		$\langle \delta_a, \varphi \rangle = \varphi(a)$.
+	}
+
+	\Definition{Производная обобщённой функции}{
+		новая обобщённая функция $T'$,
+		действующая на тест-функции $\varphi \in C_c^\infty(\mathbb{R})$ по правилу
+		$\langle T', \varphi \rangle = -\,\langle T, \varphi' \rangle$.
+		Где $T$ — исходная обобщённая функция на $\mathbb{R}$.
+	}
+
+	$f\in L_{loc}^1(\mathbb{R})$ кусочно $C^2$ и имеет разрывы лишь в точках $x=a_i$.
+
+	$\langle f', \varphi \rangle = -\,\langle f, \varphi' \rangle
+		=-\int_{-\infty}^{+\infty} f(x)\varphi'(x)dx
+		=-\sum_i\int_{a_i}^{a_{i+1}} f(x)\varphi'(x)dx \\
+		=-\sum_i([f(x)\varphi(x)]_{a_i}^{a_{i+1}}-\int_{a_i}^{a_{i+1}} f(x)'\varphi(x)dx)
+		=\sum_i\int_{a_i}^{a_{i+1}} f(x)'\varphi(x)dx -\sum_i([f(x)\varphi(x)]_{a_i}^{a_{i+1}}) \\
+		=\sum_i\int_{a_i}^{a_{i+1}} f(x)'\varphi(x)dx + \sum_i(f(a_i+0)-f(a_i-0))\varphi(a_i)
+	$.
+
+	Поскольку $\langle \delta_{a_i}, \varphi \rangle = \varphi(a_i)$,
+	то $\sum_i (f(a_i+0) - f(a_i-0))\varphi(a_i) \\
+		=\sum_i [f]_{a_i}\,\varphi(a_i)
+		= \langle \sum_i [f]_{a_i}\delta_{a_i},\,\varphi \rangle
+	$.
+
+	Так же
+	$\sum_i\int_{a_i}^{a_{i+1}} f(x)'\varphi(x)dx = \langle \{f'\}, \varphi \rangle$
+
+	$f'=\{f'\}+\sum_i([f]_{a_i}\delta_{a_i})$.
+
+	$f''=\{f''\}+\sum_i([f']_{a_i}\delta_{a_i})+\sum_i([f]_{a_i}\delta'_{a_i})$.
+
+	$f^{(3)}=\{f^{(3)}\}+\sum_i([f'']_{a_i}\delta_{a_i})+\sum_i([f']_{a_i}\delta'_{a_i})+\sum_i([f]_{a_i}\delta''_{a_i})$.
+
+	$f^{(k)}=\sum_i([f'']_{a_i}\delta^{(k-3)}_{a_i}+[f']_{a_i}\delta^{(k-2)_{a_i}}+[f]_{a_i}\delta^{(k-1)}_{a_i})$.
+	$k\leq4$.
+	Поскольку $C^2$.
+
+	% начало реального решения
+	$
+		f(x) =
+		\begin{cases}
+			2(x-1)^2, & x \in (0,1), \\
+			0,        & x \ge 1,     \\
+			1,        & x \le 0.
+		\end{cases}
+	$,
+	$
+		\{f'\}=4(x-1) x \in (0,1)
+	$,
+	$
+		\{f''\}=4 x \in (0,1)
+	$
+
+	Скачки:
+	$[f]_0=1$, $[f]_1=0$; $[f']_0=-4$, $[f']_1=0$; $[f'']_0=4$, $[f'']_1=-4$.
+
+	$f'=\{f'\}+\delta(x)$.
+
+	$f''=\{f''\}-4\,\delta(x)+\delta'(x)$
+
+	$f^{(3)}=4\delta(x)-4\delta(x-1)-4\delta'(x)+\delta''(x).$
+
+	$f^{(k)}=4\delta^{(k-3)}(x)-4\delta^{(k-3)}(x-1)-4\delta^{(k-2)}(x)+\delta^{(k-1)}(x)$,
+	$k\ge4$.
+
+	% конец реального решения
+
+\end{sol}
+
+\begin{out}
+
+	$f'=\{f'\}+\delta(x)$.
+
+	$f''=\{f''\}-4\,\delta(x)+\delta'(x)$
+
+	$f^{(3)}=4\delta(x)-4\delta(x-1)-4\delta'(x)+\delta''(x).$
+
+	$f^{(k)}=4\delta^{(k-3)}(x)-4\delta^{(k-3)}(x-1)-4\delta^{(k-2)}(x)+\delta^{(k-1)}(x)$,
+	$k\ge4$.
+\end{out}
+
+\newpage
 \TaskTag[todo]{№1.6}
 \begin{cond}
 	В пространстве \(D'(\mathbb{R})\) найти общее решение уравнения
