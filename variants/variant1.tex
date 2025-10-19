@@ -46,7 +46,7 @@
 \end{out}
 
 \newpage
-\TaskTag[todo]{№1.5}
+\TaskTag[done]{№1.5}
 \begin{cond}
 	Вычислить производные всех порядков в смысле теории обобщённых функций:
 
@@ -62,30 +62,30 @@
 
 \begin{sol}
 
-	\Definition{Тест-функция}{
+	\Definition{Пробная-функция}{
 		функция $\varphi:\mathbb{R}\to\mathbb{R}$,
 		бесконечно дифференцируемая и имеющая компактный носитель ($\varphi(x)=0$ вне некоторого отрезка).
 	}
 
 	\Definition{Обобщённая функция}{
-		непрерывный линейный функционал $T: C_c^\infty(\mathbb{R})\to\mathbb{R}$,
-		$\varphi\mapsto\langle T, \varphi \rangle$,
-		Здесь $C_c^\infty(\mathbb{R})$ -- пространство тест-функций $\varphi$.
+		непрерывный линейный функционал $f: D(\mathbb{R})\to\mathbb{R}$,
+		$\varphi\mapsto\langle f, \varphi \rangle$,
+		Здесь $D(\mathbb{R})$ -- пространство пробная-функций $\varphi$.
 	}
 
 	\Definition{Дельта-функция Дирака}{
 		обобщённая функция $\delta$, определяемая действием
 		$\langle \delta, \varphi \rangle = \varphi(0)$
-		для любой $\varphi \in C_c^\infty(\mathbb{R})$.
+		для любой $\varphi \in D(\mathbb{R})$.
 		Для сдвинутой дельта-функции $\delta_a(x)=\delta(x-a)$ имеем
 		$\langle \delta_a, \varphi \rangle = \varphi(a)$.
 	}
 
 	\Definition{Производная обобщённой функции}{
-		новая обобщённая функция $T'$,
-		действующая на тест-функции $\varphi \in C_c^\infty(\mathbb{R})$ по правилу
-		$\langle T', \varphi \rangle = -\,\langle T, \varphi' \rangle$.
-		Где $T$ — исходная обобщённая функция на $\mathbb{R}$.
+		новая обобщённая функция $f'$,
+		действующая на пробная-функции $\varphi \in D(\mathbb{R})$ по правилу
+		$\langle f', \varphi \rangle = -\,\langle f, \varphi' \rangle$.
+		Где $f$ — исходная обобщённая функция на $\mathbb{R}$.
 	}
 
 	$f\in L_{loc}^1(\mathbb{R})$ кусочно $C^2$ и имеет разрывы лишь в точках $x=a_i$.
@@ -125,13 +125,13 @@
 			0,        & x \ge 1,     \\
 			1,        & x \le 0.
 		\end{cases}
-	$,
+	$;
 	$
-		\{f'\}=4(x-1) x \in (0,1)
-	$,
+		\{f'\}=4(x-1), x \in (0,1)
+	$;
 	$
-		\{f''\}=4 x \in (0,1)
-	$
+		\{f''\}=4, x \in (0,1)
+	$.
 
 	Скачки:
 	$[f]_0=1$, $[f]_1=0$; $[f']_0=-4$, $[f']_1=0$; $[f'']_0=4$, $[f'']_1=-4$.
